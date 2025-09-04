@@ -53,7 +53,7 @@ TOOL_SLIDES = {
 st.set_page_config(page_title="OSS Compliance Dashboard", layout="wide")
 
 # Top OSS Section
-st.markdown("<h1 style='text-align:center;'>🌍 Open Source Software (OSS) Sri Ramani</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center;'>🌍 Open Source Software (OSS)</h1>", unsafe_allow_html=True)
 oss_placeholder = st.empty()
 
 # Tool Grid Section
