@@ -5,9 +5,9 @@ import webbrowser
 
 # ---------------- CONFIG ---------------- #
 OSS_SLIDES = itertools.cycle([
-    "OSS is software with source code available for everyone to use, modify, and distribute.",
-    "It promotes **collaboration, transparency, and innovation** across communities.",
-    "Licensing defines how OSS can be used — ensuring compliance and governance."
+    "Open Source Software (OSS) powers most of today’s technology stack.",
+    "While OSS accelerates innovation, it also introduces compliance and legal risks.",
+    "Proper OSS compliance ensures security, trust, and safe usage across projects."
 ])
 
 TOOL_SLIDES = {
