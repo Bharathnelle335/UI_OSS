@@ -49,31 +49,32 @@ TOOL_SLIDES = {
     }
 }
 
-# ---------------- UI CONFIG ---------------- #
+# ---------------- PAGE CONFIG ---------------- #
 st.set_page_config(page_title="OSS Compliance Dashboard", layout="wide")
 
-# Page background color
+# CSS Styling
 st.markdown(
     """
     <style>
         body {
-            background-color: #f0f2f6; /* solid background */
+            background-color: #e6e9f0; /* solid background */
         }
-        .scanner-box {
-            border: 3px solid #cccccc;
-            border-radius: 15px;
-            padding: 25px;
-            background-color: #ffffff; /* light rectangle */
-            position: relative;
+        .scanner-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 0px;
+            border: 4px solid #333333;
+            border-radius: 12px;
+            background-color: #ffffff; /* rectangle box */
+            overflow: hidden;
+            margin: auto;
+            width: 80%;
         }
-        .plus-symbol {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            font-size: 40px;
-            font-weight: bold;
-            color: #666666;
-            transform: translate(-50%, -50%);
+        .scanner-cell {
+            border: 2px solid #333333;
+            padding: 20px;
+            text-align: center;
         }
     </style>
     """,
@@ -82,34 +83,30 @@ st.markdown(
 
 # ---------------- HEADER ---------------- #
 st.markdown(
-    "<h1 style='text-align:center;'>🌍 OSS Compliance Hub <span style='font-size:16px; color:gray;'>(For EY Internal Use Only)</span></h1>",
+    """
+    <h1 style='text-align:center;'>🌍 OSS Compliance Hub</h1>
+    <h4 style='text-align:center; color:gray;'>© For EY Internal Use Only</h4>
+    """,
     unsafe_allow_html=True
 )
 
 oss_placeholder = st.empty()
 
-# ---------------- SCANNER RECTANGLE ---------------- #
-st.markdown("<div class='scanner-box'>", unsafe_allow_html=True)
-
-cols = st.columns(2)
-tool_placeholders = {}
+# ---------------- SCANNER GRID ---------------- #
+st.markdown("<div class='scanner-grid'>", unsafe_allow_html=True)
 
 tool_names = list(TOOL_SLIDES.keys())
-for i, col in enumerate(cols):
-    with col:
-        for j in range(2):  # 2 rows = 4 tools total
-            tool = tool_names[i*2 + j]
-            st.subheader(tool)
-            st.caption(TOOL_SLIDES[tool]["tagline"])
-            tool_placeholders[tool] = st.empty()
+tool_placeholders = {}
 
-            if st.button(f"➡ Open {tool} UI", key=tool):
-                st.write(f"Opening {tool} UI...")
-                st.markdown(f"[Click here if not redirected]({TOOL_SLIDES[tool]['link']})")
-                webbrowser.open_new_tab(TOOL_SLIDES[tool]["link"])
-
-# Add plus symbol in the center of the rectangle
-st.markdown("<div class='plus-symbol'>+</div>", unsafe_allow_html=True)
+for tool in tool_names:
+    st.markdown("<div class='scanner-cell'>", unsafe_allow_html=True)
+    st.subheader(tool)
+    st.caption(TOOL_SLIDES[tool]["tagline"])
+    tool_placeholders[tool] = st.empty()
+    if st.button(f"➡ Open {tool} UI", key=tool):
+        st.markdown(f"[Click here if not redirected]({TOOL_SLIDES[tool]['link']})")
+        webbrowser.open_new_tab(TOOL_SLIDES[tool]["link"])
+    st.markdown("</div>", unsafe_allow_html=True)
 
 st.markdown("</div>", unsafe_allow_html=True)
 
