@@ -10,7 +10,7 @@ components.html(
 <head>
 <meta charset="utf-8" />
 <style>
-  /* Full-page background */
+  /* Full-page background (lighter effect) */
   body {
     margin: 0;
     padding: 0;
@@ -19,21 +19,31 @@ components.html(
     background-size: cover;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   }
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.2); /* light overlay to soften the blue bg */
+    z-index: -1;
+  }
 
+  /* Header */
   .oss-header h1 {
     text-align: center;
     margin: 0;
-    font-size: 26px;
-    color: #fff;
+    font-size: 28px;
+    color: #ffffff; /* bright white */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
   }
   .oss-header h4 {
     text-align: center;
     margin: 2px 0 10px 0;
-    color: #ddd;
+    color: #f5f5f5; /* lighter gray */
     font-style: italic;
-    font-size: 13px;
+    font-size: 14px;
   }
 
+  /* OSS awareness line */
   .oss-quote-wrap { display:flex; justify-content:center; margin: 6px 0 16px 0; }
   .oss-quote {
     width: min(900px, 85vw);
@@ -46,6 +56,7 @@ components.html(
     color: #fff;
   }
 
+  /* Grid for 4 cards */
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -54,25 +65,27 @@ components.html(
     margin: auto;
   }
 
+  /* Individual card (semi-transparent) */
   .card {
-    background: #ffffff;
-    border: 1.5px solid #d1d5db;
+    background: rgba(255,255,255,0.8); /* transparent white */
+    border: 1.5px solid rgba(209,213,219,0.6);
     border-radius: 10px;
     padding: 12px 14px;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   }
   .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+    background: rgba(255,255,255,0.9); /* brighten a bit on hover */
   }
 
-  .title { margin:0 0 4px 0; font-size: 16px; }
-  .tagline { margin:0 0 8px 0; color:#555; font-size: 13px; font-style: italic; }
+  .title { margin:0 0 4px 0; font-size: 16px; color:#111; }
+  .tagline { margin:0 0 8px 0; color:#333; font-size: 13px; font-style: italic; }
   .pill {
     margin: 6px 0 10px 0;
     padding: 6px 8px;
-    background: #f6f7fb;
+    background: rgba(246,247,251,0.9);
     border: 1px solid #e4e7ef;
     border-radius: 6px;
     min-height: 32px;
@@ -83,17 +96,17 @@ components.html(
     display: inline-block;
     padding: 6px 12px;
     font-size: 13px;
-    border: 1px solid #ccc;
+    border: 1px solid #bbb;
     border-radius: 6px;
     text-decoration: none;
     color: #111;
     font-weight: 600;
-    background: #fff;
+    background: rgba(255,255,255,0.85);
     transition: all 0.2s ease;
   }
   .open-btn:hover {
     background: #f0f0f0;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
   }
 </style>
 </head>
