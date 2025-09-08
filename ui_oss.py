@@ -49,14 +49,48 @@ TOOL_SLIDES = {
     }
 }
 
-# ---------------- UI ---------------- #
+# ---------------- UI CONFIG ---------------- #
 st.set_page_config(page_title="OSS Compliance Dashboard", layout="wide")
 
-# Top OSS Section
-st.markdown("<h1 style='text-align:center;'>🌍 OSS Compliance Hub</h1>", unsafe_allow_html=True)
+# Page background color
+st.markdown(
+    """
+    <style>
+        body {
+            background-color: #f0f2f6; /* solid background */
+        }
+        .scanner-box {
+            border: 3px solid #cccccc;
+            border-radius: 15px;
+            padding: 25px;
+            background-color: #ffffff; /* light rectangle */
+            position: relative;
+        }
+        .plus-symbol {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 40px;
+            font-weight: bold;
+            color: #666666;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# ---------------- HEADER ---------------- #
+st.markdown(
+    "<h1 style='text-align:center;'>🌍 OSS Compliance Hub <span style='font-size:16px; color:gray;'>(For EY Internal Use Only)</span></h1>",
+    unsafe_allow_html=True
+)
+
 oss_placeholder = st.empty()
 
-# Tool Grid Section
+# ---------------- SCANNER RECTANGLE ---------------- #
+st.markdown("<div class='scanner-box'>", unsafe_allow_html=True)
+
 cols = st.columns(2)
 tool_placeholders = {}
 
@@ -68,20 +102,20 @@ for i, col in enumerate(cols):
             st.subheader(tool)
             st.caption(TOOL_SLIDES[tool]["tagline"])
             tool_placeholders[tool] = st.empty()
-            
-            # Use button instead of link
+
             if st.button(f"➡ Open {tool} UI", key=tool):
                 st.write(f"Opening {tool} UI...")
                 st.markdown(f"[Click here if not redirected]({TOOL_SLIDES[tool]['link']})")
                 webbrowser.open_new_tab(TOOL_SLIDES[tool]["link"])
 
-# ---------------- Live Updating Slides ---------------- #
-while True:
-    # Update OSS top section
-    oss_placeholder.info(next(OSS_SLIDES))
+# Add plus symbol in the center of the rectangle
+st.markdown("<div class='plus-symbol'>+</div>", unsafe_allow_html=True)
 
-    # Update each tool section
+st.markdown("</div>", unsafe_allow_html=True)
+
+# ---------------- LIVE SLIDES ---------------- #
+while True:
+    oss_placeholder.info(next(OSS_SLIDES))
     for tool, config in TOOL_SLIDES.items():
         tool_placeholders[tool].success(next(config["slides"]))
-
-    time.sleep(5)  # refresh every 5s
+    time.sleep(5)
