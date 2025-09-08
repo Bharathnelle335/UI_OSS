@@ -7,19 +7,19 @@ st.set_page_config(page_title="OSS Compliance Dashboard", layout="wide")
 st.markdown(
     """
     <style>
-      .stApp { background: #e6e9f0 !important; }
-      .oss-header h1 { text-align: center; margin: 0; font-size: 28px; }
-      .oss-header h4 { text-align: center; margin: 2px 0 12px 0; color: #666; font-style: italic; font-size: 14px; }
+      .stApp { background: transparent !important; }
+      .oss-header h1 { text-align: center; margin: 0; font-size: 26px; }
+      .oss-header h4 { text-align: center; margin: 2px 0 10px 0; color: #eee; font-style: italic; font-size: 13px; }
     </style>
     <div class="oss-header">
-      <h1>🌍 OSS Compliance Hub</h1>
+      <h1>OSS Compliance Hub</h1>
       <h4>© For EY Internal Use Only</h4>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-# ---------------- CARDS LAYOUT ---------------- #
+# ---------------- MAIN UI WITH BACKGROUND ---------------- #
 components.html(
     """
 <!DOCTYPE html>
@@ -27,41 +27,46 @@ components.html(
 <head>
 <meta charset="utf-8" />
 <style>
-  :root{
-    --card-bg: #ffffff;
-    --card-border: #d1d5db;
-    --pill-bg: #f6f7fb;
-    --pill-bd: #e4e7ef;
-    --btn-bg: #fff;
-    --btn-border: #ccc;
+  /* Animated single-color blue background */
+  body {
+    margin:0; padding:0;
+    background: linear-gradient(270deg, #1e3c72, #2a5298, #1e3c72);
+    background-size: 600% 600%;
+    animation: blueFlow 20s ease infinite;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   }
-  body { margin:0; padding:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+  @keyframes blueFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
   /* OSS awareness line */
-  .oss-quote-wrap { display:flex; justify-content:center; margin: 6px 0 20px 0; }
+  .oss-quote-wrap { display:flex; justify-content:center; margin: 6px 0 18px 0; }
   .oss-quote {
     width: min(900px, 85vw);
-    background: #f1f1f1;
-    border-left: 4px solid #7a7a7a;
+    background: rgba(255,255,255,0.15);
+    border-left: 4px solid #fff;
     padding: 8px 12px;
     font-style: italic;
     font-size: 14px;
     border-radius: 4px;
+    color: #fff;
   }
 
   /* Grid for 4 cards */
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px; /* space between cards */
+    gap: 16px;
     width: min(1000px, 90vw);
     margin: auto;
   }
 
   /* Individual card */
   .card {
-    background: var(--card-bg);
-    border: 1.5px solid var(--card-border);
+    background: #ffffff;
+    border: 1.5px solid #d1d5db;
     border-radius: 10px;
     padding: 14px 16px;
     transition: all 0.2s ease;
@@ -69,7 +74,7 @@ components.html(
   }
   .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
   }
 
   .title { margin:0 0 4px 0; font-size: 16px; }
@@ -77,8 +82,8 @@ components.html(
   .pill {
     margin: 6px 0 10px 0;
     padding: 6px 8px;
-    background: var(--pill-bg);
-    border: 1px solid var(--pill-bd);
+    background: #f6f7fb;
+    border: 1px solid #e4e7ef;
     border-radius: 6px;
     min-height: 32px;
     font-size: 13px;
@@ -88,17 +93,17 @@ components.html(
     display: inline-block;
     padding: 6px 12px;
     font-size: 13px;
-    border: 1px solid var(--btn-border);
+    border: 1px solid #ccc;
     border-radius: 6px;
     text-decoration: none;
     color: #111;
     font-weight: 600;
-    background: var(--btn-bg);
+    background: #fff;
     transition: all 0.2s ease;
   }
   .open-btn:hover {
     background: #f0f0f0;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
   }
 </style>
 </head>
@@ -192,6 +197,6 @@ components.html(
 </body>
 </html>
     """,
-    height=650,
+    height=680,
     scrolling=False,
 )
