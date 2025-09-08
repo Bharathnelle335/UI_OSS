@@ -10,7 +10,7 @@ components.html(
 <head>
 <meta charset="utf-8" />
 <style>
-  /* Full-page background (lighter effect) */
+  /* Full-page background */
   body {
     margin: 0;
     padding: 0;
@@ -23,7 +23,7 @@ components.html(
     content: "";
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(255,255,255,0.2); /* light overlay to soften the blue bg */
+    background: rgba(255,255,255,0.2);
     z-index: -1;
   }
 
@@ -32,28 +32,31 @@ components.html(
     text-align: center;
     margin: 0;
     font-size: 28px;
-    color: #ffffff; /* bright white */
-    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 0 3px 6px rgba(0,0,0,0.8);
   }
   .oss-header h4 {
     text-align: center;
     margin: 2px 0 10px 0;
-    color: #f5f5f5; /* lighter gray */
+    color: #f0f0f0;
     font-style: italic;
     font-size: 14px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.6);
   }
 
   /* OSS awareness line */
   .oss-quote-wrap { display:flex; justify-content:center; margin: 6px 0 16px 0; }
   .oss-quote {
     width: min(900px, 85vw);
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.6);
     border-left: 4px solid #fff;
     padding: 6px 10px;
     font-style: italic;
-    font-size: 14px;
+    font-size: 15px;
     border-radius: 4px;
     color: #fff;
+    font-weight: 600;
   }
 
   /* Grid for 4 cards */
@@ -67,7 +70,7 @@ components.html(
 
   /* Individual card (semi-transparent) */
   .card {
-    background: rgba(255,255,255,0.8); /* transparent white */
+    background: rgba(255,255,255,0.85);
     border: 1.5px solid rgba(209,213,219,0.6);
     border-radius: 10px;
     padding: 12px 14px;
@@ -77,20 +80,33 @@ components.html(
   .card:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 14px rgba(0,0,0,0.3);
-    background: rgba(255,255,255,0.9); /* brighten a bit on hover */
+    background: rgba(255,255,255,0.95);
   }
 
-  .title { margin:0 0 4px 0; font-size: 16px; color:#111; }
-  .tagline { margin:0 0 8px 0; color:#333; font-size: 13px; font-style: italic; }
+  .title {
+    margin: 0 0 4px 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+  }
+  .tagline {
+    margin: 0 0 8px 0;
+    color: #1a1a1a;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: italic;
+  }
   .pill {
     margin: 6px 0 10px 0;
     padding: 6px 8px;
-    background: rgba(246,247,251,0.9);
+    background: rgba(246,247,251,0.95);
     border: 1px solid #e4e7ef;
     border-radius: 6px;
     min-height: 32px;
     font-size: 13px;
     font-style: italic;
+    color: #000;
+    font-weight: 500;
   }
   .open-btn {
     display: inline-block;
@@ -101,7 +117,7 @@ components.html(
     text-decoration: none;
     color: #111;
     font-weight: 600;
-    background: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.9);
     transition: all 0.2s ease;
   }
   .open-btn:hover {
