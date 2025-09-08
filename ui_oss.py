@@ -3,40 +3,6 @@ import streamlit.components.v1 as components
 
 st.set_page_config(page_title="OSS Compliance Dashboard", layout="wide")
 
-# ---------------- HEADER ---------------- #
-st.markdown(
-    """
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        background: url("https://raw.githubusercontent.com/Bharathnelle335/UI_OSS/main/image.jpg") no-repeat center center fixed;
-        background-size: cover;
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      }
-      .oss-header h1 {
-        text-align: center;
-        margin: 0;
-        font-size: 26px;
-        color: #fff; /* header text visible on bg */
-      }
-      .oss-header h4 {
-        text-align: center;
-        margin: 2px 0 8px 0;
-        color: #ddd; /* sub-header visible on bg */
-        font-style: italic;
-        font-size: 13px;
-      }
-    </style>
-    <div class="oss-header">
-      <h1>OSS Compliance Hub</h1>
-      <h4>© For EY Internal Use Only</h4>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-# ---------------- MAIN CONTENT ---------------- #
 components.html(
     """
 <!DOCTYPE html>
@@ -44,11 +10,34 @@ components.html(
 <head>
 <meta charset="utf-8" />
 <style>
-  /* OSS awareness line */
+  /* Full-page background */
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: url("https://raw.githubusercontent.com/Bharathnelle335/UI_OSS/main/image.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+
+  .oss-header h1 {
+    text-align: center;
+    margin: 0;
+    font-size: 26px;
+    color: #fff;
+  }
+  .oss-header h4 {
+    text-align: center;
+    margin: 2px 0 10px 0;
+    color: #ddd;
+    font-style: italic;
+    font-size: 13px;
+  }
+
   .oss-quote-wrap { display:flex; justify-content:center; margin: 6px 0 16px 0; }
   .oss-quote {
     width: min(900px, 85vw);
-    background: rgba(0,0,0,0.5); /* dark overlay so text pops */
+    background: rgba(0,0,0,0.5);
     border-left: 4px solid #fff;
     padding: 6px 10px;
     font-style: italic;
@@ -57,7 +46,6 @@ components.html(
     color: #fff;
   }
 
-  /* Grid for 4 cards */
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -66,7 +54,6 @@ components.html(
     margin: auto;
   }
 
-  /* Individual card */
   .card {
     background: #ffffff;
     border: 1.5px solid #d1d5db;
@@ -112,14 +99,17 @@ components.html(
 </head>
 <body>
 
-  <!-- OSS awareness -->
+  <div class="oss-header">
+    <h1>OSS Compliance Hub</h1>
+    <h4>© For EY Internal Use Only</h4>
+  </div>
+
   <div class="oss-quote-wrap">
     <div class="oss-quote" id="oss-rotator">
       “Open Source Software (OSS) powers most of today’s technology stack.”
     </div>
   </div>
 
-  <!-- Grid of 4 cards -->
   <div class="grid">
     <div class="card">
       <h3 class="title">Syft</h3>
@@ -200,6 +190,6 @@ components.html(
 </body>
 </html>
     """,
-    height=700,
+    height=720,
     scrolling=False,
 )
