@@ -7,7 +7,6 @@ st.set_page_config(page_title="OSS Compliance Dashboard", layout="wide")
 st.markdown(
     """
     <style>
-      /* Background from GitHub raw image */
       body {
         margin: 0;
         padding: 0;
@@ -19,12 +18,12 @@ st.markdown(
         text-align: center;
         margin: 0;
         font-size: 26px;
-        color: #fff;
+        color: #fff; /* header text visible on bg */
       }
       .oss-header h4 {
         text-align: center;
         margin: 2px 0 8px 0;
-        color: #eee;
+        color: #ddd; /* sub-header visible on bg */
         font-style: italic;
         font-size: 13px;
       }
@@ -49,7 +48,7 @@ components.html(
   .oss-quote-wrap { display:flex; justify-content:center; margin: 6px 0 16px 0; }
   .oss-quote {
     width: min(900px, 85vw);
-    background: rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.5); /* dark overlay so text pops */
     border-left: 4px solid #fff;
     padding: 6px 10px;
     font-style: italic;
@@ -74,11 +73,11 @@ components.html(
     border-radius: 10px;
     padding: 12px 14px;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
   }
   .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
   }
 
   .title { margin:0 0 4px 0; font-size: 16px; }
@@ -201,6 +200,6 @@ components.html(
 </body>
 </html>
     """,
-    height=680,
+    height=700,
     scrolling=False,
 )
