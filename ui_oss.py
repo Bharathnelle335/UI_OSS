@@ -27,18 +27,23 @@ components.html(
     z-index: -1;
   }
 
-  /* Header */
-  .oss-header h1 {
+  /* Header container with gradient background */
+  .oss-header {
+    background: linear-gradient(90deg, #0f2027, #2c5364, #0f2027);
+    padding: 12px 0;
+    margin-bottom: 12px;
     text-align: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+  }
+  .oss-header h1 {
     margin: 0;
     font-size: 28px;
-    color: #ffffff;
+    color: #fff;
     font-weight: 700;
     text-shadow: 0 3px 6px rgba(0,0,0,0.8);
   }
   .oss-header h4 {
-    text-align: center;
-    margin: 2px 0 10px 0;
+    margin: 2px 0 0 0;
     color: #f0f0f0;
     font-style: italic;
     font-size: 14px;
@@ -219,6 +224,6 @@ components.html(
 </body>
 </html>
     """,
-    height=720,
+    height=740,
     scrolling=False,
 )
