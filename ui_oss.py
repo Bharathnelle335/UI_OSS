@@ -7,9 +7,27 @@ st.set_page_config(page_title="OSS Compliance Dashboard", layout="wide")
 st.markdown(
     """
     <style>
-      .stApp { background: transparent !important; }
-      .oss-header h1 { text-align: center; margin: 0; font-size: 26px; }
-      .oss-header h4 { text-align: center; margin: 2px 0 10px 0; color: #eee; font-style: italic; font-size: 13px; }
+      /* Background from GitHub raw image */
+      body {
+        margin: 0;
+        padding: 0;
+        background: url("https://raw.githubusercontent.com/Bharathnelle335/UI_OSS/main/image.jpg") no-repeat center center fixed;
+        background-size: cover;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      }
+      .oss-header h1 {
+        text-align: center;
+        margin: 0;
+        font-size: 26px;
+        color: #fff;
+      }
+      .oss-header h4 {
+        text-align: center;
+        margin: 2px 0 8px 0;
+        color: #eee;
+        font-style: italic;
+        font-size: 13px;
+      }
     </style>
     <div class="oss-header">
       <h1>OSS Compliance Hub</h1>
@@ -19,7 +37,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ---------------- MAIN UI WITH BACKGROUND ---------------- #
+# ---------------- MAIN CONTENT ---------------- #
 components.html(
     """
 <!DOCTYPE html>
@@ -27,27 +45,13 @@ components.html(
 <head>
 <meta charset="utf-8" />
 <style>
-  /* Animated single-color blue background */
-  body {
-    margin:0; padding:0;
-    background: linear-gradient(270deg, #1e3c72, #2a5298, #1e3c72);
-    background-size: 600% 600%;
-    animation: blueFlow 20s ease infinite;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  }
-  @keyframes blueFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
   /* OSS awareness line */
-  .oss-quote-wrap { display:flex; justify-content:center; margin: 6px 0 18px 0; }
+  .oss-quote-wrap { display:flex; justify-content:center; margin: 6px 0 16px 0; }
   .oss-quote {
     width: min(900px, 85vw);
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.2);
     border-left: 4px solid #fff;
-    padding: 8px 12px;
+    padding: 6px 10px;
     font-style: italic;
     font-size: 14px;
     border-radius: 4px;
@@ -68,7 +72,7 @@ components.html(
     background: #ffffff;
     border: 1.5px solid #d1d5db;
     border-radius: 10px;
-    padding: 14px 16px;
+    padding: 12px 14px;
     transition: all 0.2s ease;
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   }
