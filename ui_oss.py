@@ -15,7 +15,7 @@ components.html(
     margin: 0;
     padding: 0;
     height: 100vh;
-    background: url("https://raw.githubusercontent.com/Bharathnelle335/UI_OSS/main/image.png") no-repeat center center fixed;
+    background: url("https://raw.githubusercontent.com/Bharathnelle335/UI_OSS/main/image_oss.jpg") no-repeat center center fixed;
     background-size: cover;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   }
