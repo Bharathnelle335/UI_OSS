@@ -3,6 +3,67 @@ import streamlit.components.v1 as components
 
 st.set_page_config(page_title="OSS Compliance Dashboard", layout="wide")
 
+# ---------------- Sidebar: Ani (help bot) ----------------
+with st.sidebar:
+    st.header("🤖 Ani")
+    st.caption("Quick help & FAQ for this dashboard")
+
+    queries = [
+        "How is this UI useful for OSS compliance?",
+        "What does ScanOSS do?",
+        "What does ScanCode Toolkit do?",
+        "What does FOSSology do?",
+        "What does Syft do?",
+        "Where do these links go?",
+        "Do I need any special access or token?",
+        "Does this upload my source code?",
+    ]
+    q = st.radio("Queries", queries, index=0)
+
+    answers = {
+        "How is this UI useful for OSS compliance?": (
+            "- Centralizes entry points to the main OSS compliance tools used internally.\n"
+            "- Lets teams quickly choose the right tool for **license discovery**, **SBOM**, and **copyright** checks.\n"
+            "- Keeps a consistent, EY-branded landing experience."
+        ),
+        "What does ScanOSS do?": (
+            "- Detects open-source components from code (including snippets) against a global knowledge base.\n"
+            "- Useful for early identification of **license** and **copyright** risks."
+        ),
+        "What does ScanCode Toolkit do?": (
+            "- Deep **license detection**, **copyright** discovery.\n"
+            "- Can export **SBOM** in **SPDX** / **CycloneDX** formats."
+        ),
+        "What does FOSSology do?": (
+            "- Enterprise-grade license compliance toolkit with multiple agents (nomos, monk, ojo, etc.).\n"
+            "- Generates detailed reports for governance and audits."
+        ),
+        "What does Syft do?": (
+            "- Generates **SBOMs** from images or file systems.\n"
+            "- Helpful to inventory dependencies and collect license fields for compliance workflows."
+        ),
+        "Where do these links go?": (
+            "- Each card opens a dedicated Streamlit app for that tool:\n"
+            "  - **ScanOSS** → internal ScanOSS scanning UI\n"
+            "  - **ScanCode Toolkit** → in-depth license/SBOM UI\n"
+            "  - **FOSSology** → compliance reporting UI\n"
+            "  - **Syft** → SBOM generation UI"
+        ),
+        "Do I need any special access or token?": (
+            "- Generally you can browse public repos without tokens.\n"
+            "- For private resources or higher API limits, use a GitHub token in the relevant app."
+        ),
+        "Does this upload my source code?": (
+            "- Depends on the specific tool/app and configuration.\n"
+            "- Many workflows scan locally or within your controlled CI environment.\n"
+            "- Always follow internal data-handling policies."
+        ),
+    }
+
+    st.markdown("---")
+    st.markdown(f"**Answer:**\n\n{answers.get(q, 'Select a question to view the answer.')}")
+
+# ---------------- Main HTML dashboard (as provided) ----------------
 components.html(
     """
 <!DOCTYPE html>
