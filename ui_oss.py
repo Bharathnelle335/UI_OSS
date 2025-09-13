@@ -1,79 +1,68 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# Sidebar starts collapsed; Ani is hidden until toggled on
+# Sidebar starts collapsed; open it with the ">>" chevron to see Ani
 st.set_page_config(page_title="OSS Compliance Dashboard", layout="wide", initial_sidebar_state="collapsed")
 
-# ---- Toggle to show/hide Ani (the sidebar help bot) ----
-show_ani = st.toggle("🤖 Show Ani (help bot)", value=False)
+# ---------------- Sidebar: Ani (help bot) ----------------
+with st.sidebar:
+    st.header("🤖 Ani")
+    st.caption("Quick help & FAQ for this dashboard")
 
-# Hide sidebar fully if toggle is OFF (keeps main layout intact)
-if not show_ani:
-    st.markdown("""
-        <style>
-        [data-testid="stSidebar"] { display: none !important; }
-        </style>
-    """, unsafe_allow_html=True)
-else:
-    # ---------- Sidebar: Ani ----------
-    with st.sidebar:
-        st.header("🤖 Ani")
-        st.caption("Quick help & FAQ for this dashboard")
+    queries = [
+        "How is this UI useful for OSS compliance?",
+        "What does ScanOSS do?",
+        "What does ScanCode Toolkit do?",
+        "What does FOSSology do?",
+        "What does Syft do?",
+        "Where do these links go?",
+        "Do I need any special access or token?",
+        "Does this upload my source code?",
+    ]
+    q = st.radio("Queries", queries, index=0)
 
-        queries = [
-            "How is this UI useful for OSS compliance?",
-            "What does ScanOSS do?",
-            "What does ScanCode Toolkit do?",
-            "What does FOSSology do?",
-            "What does Syft do?",
-            "Where do these links go?",
-            "Do I need any special access or token?",
-            "Does this upload my source code?",
-        ]
-        q = st.radio("Queries", queries, index=0)
+    answers = {
+        "How is this UI useful for OSS compliance?": (
+            "- Centralizes entry points to the main OSS compliance tools used internally.\n"
+            "- Lets teams quickly choose the right tool for **license discovery**, **SBOM**, and **copyright** checks.\n"
+            "- Keeps a consistent, EY-branded landing experience."
+        ),
+        "What does ScanOSS do?": (
+            "- Detects open-source components from code (including snippets) against a global knowledge base.\n"
+            "- Useful for early identification of **license** and **copyright** risks."
+        ),
+        "What does ScanCode Toolkit do?": (
+            "- Deep **license detection** and **copyright** discovery.\n"
+            "- Can export **SBOM** in **SPDX** / **CycloneDX** formats."
+        ),
+        "What does FOSSology do?": (
+            "- Enterprise-grade license compliance toolkit with multiple agents (nomos, monk, ojo, etc.).\n"
+            "- Generates detailed reports for governance and audits."
+        ),
+        "What does Syft do?": (
+            "- Generates **SBOMs** from images or file systems.\n"
+            "- Helpful to inventory dependencies and collect license fields for compliance workflows."
+        ),
+        "Where do these links go?": (
+            "- Each card opens a dedicated Streamlit app for that tool:\n"
+            "  - **ScanOSS** → internal ScanOSS scanning UI\n"
+            "  - **ScanCode Toolkit** → in-depth license/SBOM UI\n"
+            "  - **FOSSology** → compliance reporting UI\n"
+            "  - **Syft** → SBOM generation UI"
+        ),
+        "Do I need any special access or token?": (
+            "- Generally you can browse public repos without tokens.\n"
+            "- For private resources or higher API limits, use a GitHub token in the relevant app."
+        ),
+        "Does this upload my source code?": (
+            "- Depends on the specific tool/app and configuration.\n"
+            "- Many workflows scan locally or within your controlled CI environment.\n"
+            "- Always follow internal data-handling policies."
+        ),
+    }
 
-        answers = {
-            "How is this UI useful for OSS compliance?": (
-                "- Centralizes entry points to the main OSS compliance tools used internally.\n"
-                "- Lets teams quickly choose the right tool for **license discovery**, **SBOM**, and **copyright** checks.\n"
-                "- Keeps a consistent, EY-branded landing experience."
-            ),
-            "What does ScanOSS do?": (
-                "- Detects open-source components from code (including snippets) against a global knowledge base.\n"
-                "- Useful for early identification of **license** and **copyright** risks."
-            ),
-            "What does ScanCode Toolkit do?": (
-                "- Deep **license detection** and **copyright** discovery.\n"
-                "- Can export **SBOM** in **SPDX** / **CycloneDX** formats."
-            ),
-            "What does FOSSology do?": (
-                "- Enterprise-grade license compliance toolkit with multiple agents (nomos, monk, ojo, etc.).\n"
-                "- Generates detailed reports for governance and audits."
-            ),
-            "What does Syft do?": (
-                "- Generates **SBOMs** from images or file systems.\n"
-                "- Helpful to inventory dependencies and collect license fields for compliance workflows."
-            ),
-            "Where do these links go?": (
-                "- Each card opens a dedicated Streamlit app for that tool:\n"
-                "  - **ScanOSS** → internal ScanOSS scanning UI\n"
-                "  - **ScanCode Toolkit** → in-depth license/SBOM UI\n"
-                "  - **FOSSology** → compliance reporting UI\n"
-                "  - **Syft** → SBOM generation UI"
-            ),
-            "Do I need any special access or token?": (
-                "- Generally you can browse public repos without tokens.\n"
-                "- For private resources or higher API limits, use a GitHub token in the relevant app."
-            ),
-            "Does this upload my source code?": (
-                "- Depends on the specific tool/app and configuration.\n"
-                "- Many workflows scan locally or within your controlled CI environment.\n"
-                "- Always follow internal data-handling policies."
-            ),
-        }
-
-        st.markdown("---")
-        st.markdown(f"**Answer:**\n\n{answers.get(q, 'Select a question to view the answer.')}")
+    st.markdown("---")
+    st.markdown(f"**Answer:**\n\n{answers.get(q, 'Select a question to view the answer.')}")
 
 # ---------------- Main HTML dashboard (unchanged) ----------------
 components.html(
@@ -172,7 +161,7 @@ components.html(
     color: #1a1a1a;
     font-size: 14px;
     font-weight: 500;
-    font-style: italic.
+    font-style: italic;
   }
   .pill {
     margin: 6px 0 10px 0;
